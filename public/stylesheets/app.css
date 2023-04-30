@@ -1,0 +1,23 @@
+.navbar, #footer {
+    background: rgba(112, 174, 252, 0.55);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(6.1px);
+    -webkit-backdrop-filter: blur(6.1px);
+}
+
+.nav-link, .navbar-brand, span {
+    color: #003c86;
+}
+
+.nav-link:hover, .navbar-brand:hover, span:hover {
+    transition: all 0.5s;
+}
+
+.card {
+    border: 2px solid rgb(112, 174, 252);
+}
+
+#cluster-map, #map {
+    width: 100%;
+    height: 500px;
+}

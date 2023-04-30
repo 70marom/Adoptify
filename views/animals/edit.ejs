@@ -1,0 +1,49 @@
+<%- layout('layouts/boilerplate') -%>
+<div class="row">
+    <h1 class="text-center">Edit <%= animal.name %></h1>
+    <div class="col-md-6 offset-md-3">
+        <div class="card shadow mb-4">
+            <div class="card-body">
+                <form action="/animals/<%= animal._id %>?_method=PUT" method="POST" novalidate class="needs-validation" enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <label class="form-label" for="name">Name: </label>
+                        <input class="form-control" type="text" id="name" name="animal[name]" value="<%= animal.name %>"
+                            required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="age">Age: </label>
+                        <input class="form-control" type="number" id="age" name="animal[age]" value="<%= animal.age %>"
+                            required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="location">Location: </label>
+                        <input class="form-control" type="text" id="location" name="animal[location]"
+                            value="<%= animal.location %>" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="description">Description: </label>
+                        <textarea class="form-control" type="text" id="description" name="animal[description]"
+                            required><%= animal.description %></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="image" class="form-label">Add Images: </label>
+                        <input class="form-control" type="file" id="image" name="image" multiple>
+                    </div>
+                    <div class="mb-3">
+                        <% animal.images.forEach((img , i) => { %>
+                            <img src="<%= img.thumbnail %>" class="img-thumbnail" alt="">
+                            <div class="form-check-inline">
+                                <input type="checkbox" id="image-<%= i %>" name="deleteImages[]" value="<%= img.filename %>">
+                            </div>
+                            <label for="image-<%= i %>">Delete?</label>
+                        <% }) %>
+                    </div>
+                    <div class="mb-3">
+                        <button class="btn btn-success">Save</button>
+                        <a href="/animals/<%= animal._id %>" class="btn btn-danger">Cancel</a>
+                    </div>
+                </form> 
+            </div>
+        </div>
+    </div>
+</div>

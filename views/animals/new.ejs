@@ -1,0 +1,36 @@
+<%- layout('layouts/boilerplate') -%>
+<div class="row">
+    <h1 class="text-center">New Animal</h1>
+    <div class="col-md-6 offset-md-3">
+        <div class="card shadow mb-4">
+            <div class="card-body">
+                <form action="/animals" method="POST" novalidate class="needs-validation" enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <label class="form-label" for="name">Name: </label>
+                        <input class="form-control" type="text" id="name" name="animal[name]" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="age">Age: </label>
+                        <input class="form-control" type="number" id="age" name="animal[age]" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="location">Location: </label>
+                        <input class="form-control" type="text" id="location" name="animal[location]" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="description">Description: </label>
+                        <textarea class="form-control" type="text" id="description" name="animal[description]"
+                            required></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="image" class="form-label">Images: </label>
+                        <input class="form-control" type="file" id="image" name="image" multiple>
+                    </div>
+                    <div class="mb-3">
+                        <button class="btn btn-success">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

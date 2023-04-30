@@ -1,0 +1,37 @@
+<%- layout('layouts/boilerplate') -%>
+<div id="cluster-map"></div>
+
+
+<h1>All Available Animlas</h1>
+<% for(animal of animals) { %>
+    <div class="card mb-2 rounded-4">
+        <div class="row">
+            <div class="col-md-4">
+                <img class="img-fluid rounded-start-4" src="<%= animal.images[0].url %>" alt="">
+            </div>
+            <div class="col-md-8 pt-2 pe-4">
+                <h5 class="card-title">
+                    <%= animal.name %>
+                </h5>
+                <h6 class="card-title">
+                    Age: <%= animal.age %>
+                </h6>
+                <p class="card-text">
+                    <%= animal.description %>
+                </p>
+                <p class="card-text">
+                    <small class="text-muted">
+                        <%= animal.location %>
+                    </small>
+                </p>
+                <a href="/animals/<%= animal._id %>" class="btn btn-primary mb-2">View <%= animal.name %></a>
+            </div>
+        </div>
+    </div>
+<% } %>
+
+<script>
+    const mapToken = '<%- process.env.MAPBOX_TOKEN %>';
+    const animals = { features: <%- JSON.stringify(animals) %> };
+</script>
+<script src="/scripts/clusterMap.js"></script>
