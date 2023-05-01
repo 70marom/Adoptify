@@ -31,13 +31,13 @@
             </div>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">
-                    Age: <%= animal.age %>
+                    Age: <%= animal.age %> <%= animal.ageType %>
                 </li>
                 <li class="list-group-item">
-                    <%= animal.location %>
+                    Sex: <%= animal.sex %>
                 </li>
                 <li class="list-group-item">
-                    Owner: <%= animal.owner.username %>
+                    Location: <%= animal.location %>
                 </li>
             </ul>
             <% if (currentUser && animal.owner.equals(currentUser._id)) { %>

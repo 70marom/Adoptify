@@ -11,8 +11,20 @@ imageSchema.virtual('thumbnail').get(function() {
 });
 
 const animalSchema = new Schema({
+/*     category: {
+        type: String,
+        enum: ['Dog', 'Cat', 'Fish', 'Rodent', 'Bird', 'Other']
+    }, */
     name: String,
     age: Number,
+    ageType: {
+        type: String,
+        enum: ['Months', 'Years']   
+    },
+    sex: {
+        type: String,
+        enum: ['Male', 'Female']    
+    },
     description: String,
     location: String,
     geometry: {

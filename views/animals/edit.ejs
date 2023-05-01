@@ -5,25 +5,46 @@
         <div class="card shadow mb-4">
             <div class="card-body">
                 <form action="/animals/<%= animal._id %>?_method=PUT" method="POST" novalidate class="needs-validation" enctype="multipart/form-data">
-                    <div class="mb-3">
-                        <label class="form-label" for="name">Name: </label>
+                    <div class="mb-3 form-floating">
                         <input class="form-control" type="text" id="name" name="animal[name]" value="<%= animal.name %>"
-                            required>
+                        placeholder="Name" required>
+                        <label for="name">Name</label>
                     </div>
-                    <div class="mb-3">
-                        <label class="form-label" for="age">Age: </label>
-                        <input class="form-control" type="number" id="age" name="animal[age]" value="<%= animal.age %>"
-                            required>
+                    <div class="row g-2">
+                        <div class="col-md">
+                            <div class="input-group mb-3">
+                                <div class="form-floating">
+                                    <input class="form-control" type="number" id="age" name="animal[age]" value="<%= animal.age %>" placeholder="0" required>
+                                    <label for="age">Age</label>
+                                </div>
+                                <select class="form-select" name="animal[ageType]">
+                                    <option value="Months" <%= animal.ageType === 'Months' ? 'selected' : '' %>>Months</option>
+                                    <option value="Years" <%= animal.ageType === 'Years' ? 'selected' : '' %>>Years</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md mb-3 ms-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="animal[sex]" id="flexRadioDefault1" value="Male"
+                                <%= animal.sex === 'Male' ? 'checked' : '' %> >
+                                <label class="form-check-label" for="flexRadioDefault1">Male</label>
+                            </div>
+                              <div class="form-check">
+                                <input class="form-check-input" type="radio" name="animal[sex]" id="flexRadioDefault2" value="Female"
+                                <%= animal.sex === 'Female' ? 'checked' : '' %>>
+                                <label class="form-check-label" for="flexRadioDefault2">Female</label>
+                            </div>
+                        </div>
                     </div>
-                    <div class="mb-3">
-                        <label class="form-label" for="location">Location: </label>
+                    <div class="mb-3 form-floating">
                         <input class="form-control" type="text" id="location" name="animal[location]"
-                            value="<%= animal.location %>" required>
+                        value="<%= animal.location %>" placeholder="Location" required>
+                        <label for="location">Location</label>
                     </div>
-                    <div class="mb-3">
-                        <label class="form-label" for="description">Description: </label>
-                        <textarea class="form-control" type="text" id="description" name="animal[description]"
-                            required><%= animal.description %></textarea>
+                    <div class="mb-3 form-floating">
+                        <textarea class="form-control" type="text" id="description" name="animal[description]" placeholder="Description" 
+                        required><%= animal.description %></textarea>
+                        <label for="description">Description</label>
                     </div>
                     <div class="mb-3">
                         <label for="image" class="form-label">Add Images: </label>

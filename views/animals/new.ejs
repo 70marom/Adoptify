@@ -5,26 +5,46 @@
         <div class="card shadow mb-4">
             <div class="card-body">
                 <form action="/animals" method="POST" novalidate class="needs-validation" enctype="multipart/form-data">
-                    <div class="mb-3">
-                        <label class="form-label" for="name">Name: </label>
-                        <input class="form-control" type="text" id="name" name="animal[name]" required>
+                    <div class="mb-3 form-floating">
+                        <input class="form-control" type="text" id="name" name="animal[name]" placeholder="Name" required>
+                        <label for="name">Name</label>
                     </div>
-                    <div class="mb-3">
-                        <label class="form-label" for="age">Age: </label>
-                        <input class="form-control" type="number" id="age" name="animal[age]" required>
+                    <div class="row g-2">
+                        <div class="col-md">
+                            <div class="input-group mb-3">
+                                <div class="form-floating">
+                                    <input class="form-control" type="number" id="age" name="animal[age]" placeholder="0" required>
+                                    <label for="age">Age</label>
+                                </div>
+                                <select class="form-select" name="animal[ageType]">
+                                    <option value="Months">Months</option>
+                                    <option value="Years">Years</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md mb-3 ms-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="animal[sex]" id="flexRadioDefault1" value="Male" checked>
+                                <label class="form-check-label" for="flexRadioDefault1">Male</label>
+                            </div>
+                              <div class="form-check">
+                                <input class="form-check-input" type="radio" name="animal[sex]" id="flexRadioDefault2" value="Female">
+                                <label class="form-check-label" for="flexRadioDefault2">Female</label>
+                            </div>
+                        </div>
                     </div>
-                    <div class="mb-3">
-                        <label class="form-label" for="location">Location: </label>
-                        <input class="form-control" type="text" id="location" name="animal[location]" required>
+                    <div class="mb-3 form-floating">
+                        <input class="form-control" type="text" id="location" name="animal[location]" placeholder="Location" required>
+                        <label for="location">Location</label>
                     </div>
-                    <div class="mb-3">
-                        <label class="form-label" for="description">Description: </label>
-                        <textarea class="form-control" type="text" id="description" name="animal[description]"
-                            required></textarea>
+                    <div class="mb-3 form-floating">
+                        <textarea class="form-control" type="text" id="description" name="animal[description]" placeholder="Description"
+                        required></textarea>
+                        <label for="description">Description</label>
                     </div>
                     <div class="mb-3">
                         <label for="image" class="form-label">Images: </label>
-                        <input class="form-control" type="file" id="image" name="image" multiple>
+                        <input class="form-control" type="file" id="image" name="image" multiple required>
                     </div>
                     <div class="mb-3">
                         <button class="btn btn-success">Submit</button>
