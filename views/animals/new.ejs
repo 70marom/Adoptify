@@ -5,6 +5,13 @@
         <div class="card shadow mb-4">
             <div class="card-body">
                 <form action="/animals" method="POST" novalidate class="needs-validation" enctype="multipart/form-data">
+                    <div class="btn-group mb-3" role="group">
+                        <% for(let i = 0; i < categories.length; i++) { %>
+                            <input type="radio" class="btn-check" name="animal[category]" id="btnradio<%= i %>" autocomplete="off"
+                            <%= i === 0 ? 'checked' : '' %> value="<%= categories[i] %>">
+                            <label class="btn btn-outline-primary" for="btnradio<%= i %>"><%= categories[i] %></label>
+                        <% } %>
+                    </div>
                     <div class="mb-3 form-floating">
                         <input class="form-control" type="text" id="name" name="animal[name]" placeholder="Name" required>
                         <label for="name">Name</label>

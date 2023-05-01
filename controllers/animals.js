@@ -3,6 +3,7 @@ const mbxGeocoding = require("@mapbox/mapbox-sdk/services/geocoding");
 const mapBoxToken = process.env.MAPBOX_TOKEN;
 const geocoder = mbxGeocoding({ accessToken: mapBoxToken });
 const { cloudinary } = require('../cloudinary');
+const categories = ['Dog', 'Cat', 'Fish', 'Rodent', 'Bird', 'Other'];
 
 module.exports.index = async (req, res) => {
     const animals = await Animal.find({});
@@ -10,7 +11,7 @@ module.exports.index = async (req, res) => {
 };
 
 module.exports.newForm = (req, res) => {
-    res.render('animals/new');
+    res.render('animals/new', { categories });
 };
 
 module.exports.createAnimal = async (req, res) => {
@@ -42,7 +43,7 @@ module.exports.editForm = async (req, res) => {
         req.flash('error', 'Could not find the animal you are looking for!');
         return res.redirect('/animals');
     }
-    res.render('animals/edit', { animal });
+    res.render('animals/edit', { animal, categories });
 };
 
 module.exports.editAnimal = async (req, res) => {

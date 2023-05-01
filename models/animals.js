@@ -11,10 +11,10 @@ imageSchema.virtual('thumbnail').get(function() {
 });
 
 const animalSchema = new Schema({
-/*     category: {
+    category: {
         type: String,
         enum: ['Dog', 'Cat', 'Fish', 'Rodent', 'Bird', 'Other']
-    }, */
+    },
     name: String,
     age: Number,
     ageType: {

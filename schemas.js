@@ -25,6 +25,7 @@ const joi = BaseJoi.extend(extension);
 
 module.exports.animalSchema = joi.object({
     animal: joi.object({
+        category: joi.string().required(),
         name: joi.string().required().escapeHTML(),
         age: joi.number().required().min(0),
         ageType: joi.string().required(),
