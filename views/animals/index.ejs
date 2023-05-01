@@ -3,28 +3,28 @@
 
 <div class="container mt-2">
     <h1>All Available Animlas</h1>
-    <% for(animal of animals) { %>
+    <% for(let i = animals.length - 1; i >= 0; i--) { %>
         <div class="card mb-2 rounded-4">
             <div class="row">
                 <div class="col-md-4">
-                    <img class="img-fluid rounded-start-4" src="<%= animal.images[0].url %>" alt="">
+                    <img class="img-fluid rounded-start-4" src="<%= animals[i].images[0].url %>" alt="">
                 </div>
                 <div class="col-md-8 pt-2 pe-4">
                     <h5 class="card-title">
-                        <%= animal.name %>
+                        <%= animals[i].name %>
                     </h5>
                     <h6 class="card-title">
-                        Age: <%= animal.age %>
+                        Age: <%= animals[i].age %>
                     </h6>
                     <p class="card-text">
-                        <%= animal.description %>
+                        <%= animals[i].description %>
                     </p>
                     <p class="card-text">
                         <small class="text-muted">
-                            <%= animal.location %>
+                            <%= animals[i].location %>
                         </small>
                     </p>
-                    <a href="/animals/<%= animal._id %>" class="btn btn-primary mb-2">View <%= animal.name %></a>
+                    <a href="/animals/<%= animals[i]._id %>" class="btn btn-primary mb-2">View <%= animals[i].name %></a>
                 </div>
             </div>
         </div>
