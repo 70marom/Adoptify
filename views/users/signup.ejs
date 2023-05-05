@@ -8,15 +8,38 @@
                     <form action="/signup" class="needs-validation" novalidate method="POST">
                         <div class="mb-3">
                             <label class="form-label" for="username">Username: </label>
-                            <input class="form-control" type="text" id="username" name="username" required autofocus>
+                            <input class="form-control" type="text" id="username" name="username" minlength="3" required autofocus>
+                            <div class="invalid-feedback">
+                                Please choose a username with 3 characters at least!
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="fullName">Full Name: </label>
+                            <input class="form-control" type="text" id="fullName" name="fullName" required>
+                            <div class="invalid-feedback">
+                                Please enter your full name!
+                            </div>
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="email">Email: </label>
                             <input class="form-control" type="email" id="email" name="email" required>
+                            <div class="invalid-feedback">
+                                Please enter your email!
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="phone">Phone Number: </label>
+                            <input class="form-control" type="tel" id="phone" name="phone" pattern="05[0-9]-[0-9]{3}-[0-9]{4}" required>
+                            <div class="invalid-feedback">
+                                Please enter a phone number from the format 05X-XXX-XXXX!
+                            </div>
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="password">Password: </label>
-                            <input class="form-control" type="password" id="password" name="password" required>
+                            <input class="form-control" type="password" id="password" name="password" minlength="7" required>
+                            <div class="invalid-feedback">
+                                Please choose a password with 7 characters at least!
+                            </div>
                         </div>
                         <div class="d-grid">
                             <Button class="btn btn-success">Sign Up</Button>
