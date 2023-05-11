@@ -11,6 +11,10 @@ router.route('/')
     .get(wrapAsync(animals.index))
     .post(isLoggedIn, upload.array('image'), animalValidation, wrapAsync(animals.createAnimal))
 
+router.route('/filters')
+    .get(wrapAsync(animals.index))
+    .post(wrapAsync(animals.filter))
+
 router.get('/new', isLoggedIn, animals.newForm)
 
 router.route('/:id')

@@ -6,6 +6,9 @@ const mbxGeocoding = require("@mapbox/mapbox-sdk/services/geocoding");
 const mapBoxToken = process.env.MAPBOX_TOKEN;
 const geocoder = mbxGeocoding({ accessToken: mapBoxToken });
 
+const categories = ['Dog', 'Cat', 'Fish', 'Rodent', 'Bird', 'Other'];
+const genders = ['Male', 'Female'];
+
 mongoose.connect('mongodb://127.0.0.1:27017/adoptify');
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "Connection error:"));
@@ -19,6 +22,8 @@ const seedDB = async () => {
     await Animal.deleteMany({});
     for (let i = 0; i < 200; i++) {
         const randName = randElement(names);
+        const randCategory = randElement(categories);
+        const randGen = randElement(genders);
         const randLocation = randElement(cities).name + ', Israel';
         const geoData = await geocoder.forwardGeocode({
           query: randLocation,
@@ -26,7 +31,9 @@ const seedDB = async () => {
         }).send();
         await new Animal({
             name: randName,
+            category: randCategory,
             age: Math.floor(Math.random() * 15),
+            gender: randGen,
             location: randLocation,
             geometry: geoData.body.features[0].geometry,
             description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sed ipsum massa. Curabitur tellus neque, maximus vel pharetra in, lacinia et magna. Proin convallis tincidunt nibh, sed feugiat tortor sagittis sed.',

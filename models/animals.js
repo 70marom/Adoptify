@@ -21,7 +21,7 @@ const animalSchema = new Schema({
         type: String,
         enum: ['Months', 'Years']   
     },
-    sex: {
+    gender: {
         type: String,
         enum: ['Male', 'Female']    
     },

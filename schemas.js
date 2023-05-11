@@ -29,7 +29,7 @@ module.exports.animalSchema = joi.object({
         name: joi.string().required().escapeHTML(),
         age: joi.number().required().min(0),
         ageType: joi.string().required(),
-        sex: joi.string().required(),
+        gender: joi.string().required(),
         description: joi.string().required().escapeHTML(),
         location: joi.string().required().escapeHTML(),
     }).required(),

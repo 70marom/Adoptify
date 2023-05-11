@@ -1,34 +1,78 @@
-<%- layout('layouts/boilerplate') -%>
+<%- layout('layouts/indexLayout') -%>
 <div id="cluster-map"></div>
 
-<div class="container mt-2">
-    <h1>All Available Animlas</h1>
-    <% for(let i = animals.length - 1; i >= 0; i--) { %>
-        <div class="card mb-2 rounded-4">
-            <div class="row">
-                <div class="col-md-4">
-                    <img class="img-fluid rounded-start-4" src="<%= animals[i].images[0].url %>" alt="">
+<div class="mt-3">
+    <div class="row">
+        <div class="col-md-3">
+            <form class="ms-3" action="/animals/filters" method="POST" novalidate>
+                <div class="btn-group mb-3" role="group">
+                    <input type="radio" class="btn-check" name="filters[category]" id="btnradio0" autocomplete="off"
+                    <%= typeof filters !== 'undefined' && filters.hasOwnProperty('category') ? '' : 'checked' %> value="All">
+                    <label class="btn btn-outline-primary" for="btnradio0">All</label>
+                    <% for(let i = 0; i < categories.length; i++) { %>
+                        <input type="radio" class="btn-check" name="filters[category]" id="btnradio<%= i+1 %>" autocomplete="off"
+                        <%= (typeof filters !== 'undefined' && filters.category === categories[i]) ? 'checked' : '' %> value="<%= categories[i] %>">
+                        <label class="btn btn-outline-primary" for="btnradio<%= i+1 %>"><%= categories[i] %></label>
+                    <% } %>
                 </div>
-                <div class="col-md-8 pt-2 pe-4">
-                    <h5 class="card-title">
-                        <%= animals[i].name %>
-                    </h5>
-                    <h6 class="card-title">
-                        Age: <%= animals[i].age %>
-                    </h6>
-                    <p class="card-text">
-                        <%= animals[i].description %>
-                    </p>
-                    <p class="card-text">
-                        <small class="text-muted">
-                            <%= animals[i].location %>
-                        </small>
-                    </p>
-                    <a href="/animals/<%= animals[i]._id %>" class="btn btn-primary mb-2">View <%= animals[i].name %></a>
+                <div class="mb-3">
+                    <select class="form-select" name="age">
+                        <option <%= typeof age === 'undefined' || age === 'Age' ? 'selected' : '' %>>Age</option>
+                        <option value="kitten" <%= typeof age !== 'undefined' && age === 'kitten' ? 'selected' : ''  %>>Kitten (Up to 1 year)</option>
+                        <option value="young" <%= typeof age !== 'undefined' && age === 'young' ? 'selected' : ''  %>>Young Adult (1-6 years)</option>
+                        <option value="mature" <%= typeof age !== 'undefined' && age === 'mature' ? 'selected' : ''  %>>Mature Adult (7-10 years)</option>
+                        <option value="senior" <%= typeof age !== 'undefined' && age === 'senior' ? 'selected' : ''  %>>Senior (11+ years)</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="filters[gender]" id="flexRadioDefault1" value="Male"
+                        <%= (typeof filters !== 'undefined' && filters.gender === 'Male') ? 'checked' : '' %>>
+                        <label class="form-check-label" for="flexRadioDefault1">Male</label>
+                    </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="filters[gender]" id="flexRadioDefault2" value="Female"
+                        <%= (typeof filters !== 'undefined' && filters.gender === 'Female') ? 'checked' : '' %>>
+                        <label class="form-check-label" for="flexRadioDefault2">Female</label>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <button class="btn btn-success">Filter</button>
+                    <a class="btn btn-danger" href="/animals">Reset</a>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-9">
+            <div class="album py-5">
+                <div class="container">
+                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                        <% for(let i = animals.length - 1; i >= 0; i--) { %>
+                            <div class="col">
+                                <div class="card mb-2 rounded-4">
+                                    <img class="card-img-top rounded-4" height="250" width="100%" src="<%= animals[i].images[0].url %>" alt="">
+                                    <div class="card-body">                                    
+                                        <h5 class="card-title">
+                                            <%= animals[i].name %>
+                                        </h5>
+                                        <h6 class="card-subtitle text-body-secondary mb-2">
+                                            <%= animals[i].category %>
+                                        </h6>
+                                        <h6 class="card-title">
+                                            Age: <%= animals[i].age %> <%= animals[i].ageType %>
+                                        </h6>
+                                        <div class="d-flex justify-content-between align-items-center mt-3">
+                                            <a href="/animals/<%= animals[i]._id %>" class="btn btn-primary mb-2">View <%= animals[i].name %></a>
+                                            <small class="text-body-secondary"><%= animals[i].location %></small>
+                                        </div>                                    
+                                    </div>
+                                </div>
+                            </div>
+                        <% } %>
+                    </div>
                 </div>
             </div>
         </div>
-    <% } %>
+    </div>
 </div>
 
 

@@ -10,7 +10,6 @@ module.exports.signup = async (req, res, next) => {
         const { fullName, email, phone, username, password } = req.body;
         const user = new User({ fullName, email, phone, username });
         const newUser = await User.register(user, password);
-        console.log(newUser);
         req.login(newUser, (err) => {
             if(err) return next(err);
             req.flash('success', 'Signed up successfully! Welcome to Adoptify');

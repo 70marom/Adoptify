@@ -7,7 +7,7 @@ const categories = ['Dog', 'Cat', 'Fish', 'Rodent', 'Bird', 'Other'];
 
 module.exports.index = async (req, res) => {
     const animals = await Animal.find({});
-    res.render('animals/index', { animals });
+    res.render('animals/index', { animals, categories });
 };
 
 module.exports.newForm = (req, res) => {
@@ -27,6 +27,25 @@ module.exports.createAnimal = async (req, res) => {
     req.flash('success', 'Your animal is ready for adoption!');
     res.redirect(`/animals/${newAnimal._id}`);
 };
+
+module.exports.filter = async (req, res) => {
+    const filters = req.body.filters;
+    const age = req.body.age;
+    let animals;
+    if(filters.category === 'All')
+        delete filters.category;
+    if(age === 'kitten')
+        animals = await Animal.find({...filters, ageType: 'Months', age: { $lte: 12 }});
+    else if(age === 'young')
+        animals = await Animal.find({...filters, $or: [{ageType: 'Years', age: { $gte: 1, $lte: 6 }}, {ageType: 'Months', age: { $gte: 13, $lte: 72 }}]});
+    else if(age === 'mature')
+        animals = await Animal.find({...filters,  $or: [{ageType: 'Years', age: { $gte: 7, $lte: 10 }}, {ageType: 'Months', age: { $gte: 73, $lte: 120 }}]});
+    else if(age === 'senior')
+        animals = await Animal.find({...filters, $or: [{ageType: 'Years', age: { $gte: 11 }}, {ageType: 'Months', age: { $gte: 121 }}]});
+    else
+        animals = await Animal.find(filters);
+    res.render('animals/index', { animals, filters, categories, age });
+}
 
 module.exports.showAnimal = async (req, res) => {
     const animal = await Animal.findById(req.params.id).populate('owner');
