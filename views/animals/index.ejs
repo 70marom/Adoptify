@@ -18,8 +18,8 @@
                 <div class="mb-3">
                     <select class="form-select" name="age">
                         <option <%= typeof age === 'undefined' || age === 'Age' ? 'selected' : '' %>>Age</option>
-                        <option value="kitten" <%= typeof age !== 'undefined' && age === 'kitten' ? 'selected' : ''  %>>Kitten (Up to 1 year)</option>
-                        <option value="young" <%= typeof age !== 'undefined' && age === 'young' ? 'selected' : ''  %>>Young Adult (1-6 years)</option>
+                        <option value="young" <%= typeof age !== 'undefined' && age === 'young' ? 'selected' : ''  %>>Young (Up to 1 year)</option>
+                        <option value="youngAdult" <%= typeof age !== 'undefined' && age === 'youngAdult' ? 'selected' : ''  %>>Young Adult (1-6 years)</option>
                         <option value="mature" <%= typeof age !== 'undefined' && age === 'mature' ? 'selected' : ''  %>>Mature Adult (7-10 years)</option>
                         <option value="senior" <%= typeof age !== 'undefined' && age === 'senior' ? 'selected' : ''  %>>Senior (11+ years)</option>
                     </select>
