@@ -34,9 +34,9 @@ module.exports.filter = async (req, res) => {
     let animals;
     if(filters.category === 'All')
         delete filters.category;
-    if(age === 'kitten')
+    if(age === 'young')
         animals = await Animal.find({...filters, ageType: 'Months', age: { $lte: 12 }});
-    else if(age === 'young')
+    else if(age === 'youngAdult')
         animals = await Animal.find({...filters, $or: [{ageType: 'Years', age: { $gte: 1, $lte: 6 }}, {ageType: 'Months', age: { $gte: 13, $lte: 72 }}]});
     else if(age === 'mature')
         animals = await Animal.find({...filters,  $or: [{ageType: 'Years', age: { $gte: 7, $lte: 10 }}, {ageType: 'Months', age: { $gte: 73, $lte: 120 }}]});
