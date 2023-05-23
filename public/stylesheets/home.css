@@ -14,23 +14,33 @@ body {
 .nav-link {
     padding: 0.25rem 0;
     font-weight: 700;
-    color: rgba(103, 103, 103, 0.5);
+    color: rgba(94, 94, 94, 0.5);
     margin-left: 1rem;
     border-bottom: 0.25rem solid transparent;
 }
 
 .nav-link:hover{
-    color: rgba(255,255,255,0.5);
+    color: rgb(197, 197, 197);
     border-bottom-color:rgba(255,255,255,0.5);
 }
 
 .nav-link.active {
     color: white;
     border-bottom-color:white;
-
 }
 
-.btn-secondary, .btn-secondary:hover{
+.btn-secondary{
+    background-color: white;
     color: #333;
     text-shadow: none;
+}
+
+.btn-secondary:hover, .btn-secondary:active:focus {
+    box-shadow: none;
+    background-color: #d5e0ff;
+    color: #202020;
+}
+
+.btn-secondary:active {
+    transform: scale(1.03);
 }

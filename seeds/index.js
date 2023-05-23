@@ -33,6 +33,7 @@ const seedDB = async () => {
             name: randName,
             category: randCategory,
             age: Math.floor(Math.random() * 15),
+            ageType: 'Years',
             gender: randGen,
             location: randLocation,
             geometry: geoData.body.features[0].geometry,
@@ -40,12 +41,12 @@ const seedDB = async () => {
             owner: '64494fa1be1c2ac10e765729',
             images: [
                 {
-                  url: 'https://res.cloudinary.com/dinay3obb/image/upload/v1682710889/Adoptify/w4kksbv7fqwoheluokn3.jpg',
-                  filename: 'Adoptify/w4kksbv7fqwoheluokn3',
+                  url: 'https://res.cloudinary.com/dinay3obb/image/upload/v1684846415/Adoptify/catEx_obkbgt.jpg',
+                  filename: 'Adoptify/catEx_obkbgt',
                 },
                 {
-                  url: 'https://res.cloudinary.com/dinay3obb/image/upload/v1682710889/Adoptify/zefvepiv7en6ptw6avws.jpg',
-                  filename: 'Adoptify/zefvepiv7en6ptw6avws',
+                  url: 'https://res.cloudinary.com/dinay3obb/image/upload/v1684846415/Adoptify/dogEx_izazgy.jpg',
+                  filename: 'Adoptify/dogEx_izazgy',
                 }
               ]
         }).save()
