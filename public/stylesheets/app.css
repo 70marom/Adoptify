@@ -10,11 +10,17 @@
 }
 
 .nav-link:hover, .navbar-brand:hover, span:hover {
-    transition: all 0.5s;
+    color: #5b86ba;
+    transition: all 0.2s;
 }
 
 .card {
     border: 2px solid rgb(112, 174, 252);
+    transition: all 0.2s;
+}
+
+.cardIndex:hover {
+    transform: scale(1.05);
 }
 
 #cluster-map, #map {

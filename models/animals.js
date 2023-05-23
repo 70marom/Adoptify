@@ -50,7 +50,8 @@ const animalSchema = new Schema({
 animalSchema.virtual('properties.popUp').get(function() {
     return `
     <strong><a href="/animals/${this._id}">${this.name}</a></strong>
-    <p>Age: ${this.age}</p>`
+    <p>Category: ${this.category}<br>
+    Age: ${this.age}</p>`
 });
 
 module.exports = mongoose.model('Animal', animalSchema);
